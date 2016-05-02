@@ -1,0 +1,28 @@
+# ZSH Config
+export ZSH=/Users/aguz/.oh-my-zsh
+
+plugins=(git rails google bundlerx command-not-found npm nyan history sudo wd web-search bundler)
+
+source $ZSH/oh-my-zsh.sh
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Aliases
+alias zshconfig="vim ~/.zshrc"
+alias reload!="source ~/.zshrc"
+
+# Functions
+function git-clean {
+  git fetch -u
+  git branch --merged | grep -v '*' | grep -v master | grep -v development | ifne xargs -n 1 git branch -d
+}
+
+# NVM
+export NVM_DIR="/Users/aguz/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Load local configurations
+if [[ -a ~/.localrc ]]; then
+  source ~/.localrc
+fi
+
