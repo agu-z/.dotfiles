@@ -1,4 +1,4 @@
-# dotfiles
+# .dotfiles
 My messy config files (zsh, vim, tmux, etc). Most of them stolen 😉
 
 # TODO
