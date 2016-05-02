@@ -1,5 +1,5 @@
 # ZSH Config
-export ZSH=/Users/aguz/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 plugins=(git rails google bundlerx command-not-found npm nyan history sudo wd web-search bundler)
 

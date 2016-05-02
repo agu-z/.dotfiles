@@ -1,4 +1,5 @@
-
+# heavily COPIED from nicknisi dotfiles 
+#
 # heavily inspired by the wonderful pure theme
 # https://github.com/sindresorhus/pure
 
