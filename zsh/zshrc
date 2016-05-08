@@ -1,7 +1,7 @@
 # ZSH Config
 export ZSH=~/.oh-my-zsh
 
-plugins=(git rails google bundlerx command-not-found npm nyan history sudo wd web-search bundler)
+plugins=(git rails google bundlerx command-not-found npm nyan history sudo wd web-search bundler tmuxinator tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,3 +26,10 @@ if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
 
+# Set default editor
+export EDITOR='nvim' #, of course
+
+# Tmuxinator aliasses
+alias tms='tmuxinator start'
+alias tme='tmuxinator edit'
+alias tmn='tmuxinator new'

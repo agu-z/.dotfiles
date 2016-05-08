@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 set nocompatible
 filetype off
 set encoding=utf-8
@@ -15,25 +13,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'L9'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-rake'
-NeoBundle 'tpope/vim-bundler'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'matze/vim-move'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
-NeoBundle 'tomtom/tlib_vim'
-NeoBundle 'garbas/vim-snipmate'
-NeoBundle 'honza/vim-snippets'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'milkypostman/vim-togglelist'
 NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
@@ -78,10 +64,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set wrap
-set linebreak
 set relativenumber
-
 set clipboard=unnamed
 
 " note trailing space at end of next line
@@ -93,10 +76,6 @@ set autoread
 
 " Remove trailing whitespace
 autocmd FileType c,cpp,java,php,ruby,python,rb,coffee,js,html,css,scss,erb,haml,ts,styl,jade autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-" Misc mappings
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
 
 " Tsuquyomi
 autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
@@ -136,3 +115,7 @@ let g:indentLine_enabled = 0
 
 " Move lines
 let g:move_key_modifier = 'C'
+
+" Add empty lines without entering normal mode
+map <leader>o o<Esc>
+map <leader>O O<Esc>
