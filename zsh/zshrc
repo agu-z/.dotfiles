@@ -1,7 +1,7 @@
 # ZSH Config
 export ZSH=~/.oh-my-zsh
 
-plugins=(git rails google bundlerx command-not-found npm nyan history sudo wd web-search bundler tmuxinator tmux)
+plugins=(git rails google bundlerx command-not-found npm nyan history sudo wd web-search bundler tmuxinator tmux zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,3 +33,8 @@ export EDITOR='nvim' #, of course
 alias tms='tmuxinator start'
 alias tme='tmuxinator edit'
 alias tmn='tmuxinator new'
+
+# Neovim
+alias vim=nvim
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
