@@ -1,61 +1,36 @@
-set nocompatible
 filetype off
-set encoding=utf-8
-set autoread
-set listchars=trail:·
 set list
 
-set runtimepath^=~/.vim/bundle/neobundle.vim/
+call plug#begin('~/.config/nvim/plugged')
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+Plug 'benekastah/neomake'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'matze/vim-move'
+Plug 'Quramy/tsuquyomi'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'Shougo/vimproc.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+Plug 'Valloric/YouCompleteMe'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#end()
 
-NeoBundle 'tpope/vim-fugitive.git'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'matze/vim-move'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-
-NeoBundle 'Quramy/tsuquyomi'
-
-call neobundle#end()
-
-syntax enable
 set showcmd
-filetype plugin indent on
-
-NeoBundleCheck
-
 set nowrap
 set tabstop=2 shiftwidth=2
 set expandtab
 set backspace=indent,eol,start
 
-set hlsearch
-set incsearch
-set ignorecase
 set smartcase
-set nu
-set laststatus=2
 
 set sw=2
 set ts=2
-set et
-set iskeyword+=!,?,=
 
 set guifont=Hack:h12
 colorscheme atom-dark-256
@@ -66,13 +41,6 @@ set noswapfile
 
 set relativenumber
 set clipboard=unnamed
-
-" note trailing space at end of next line
-" set showbreak=>\ \ \
-set listchars=tab:\ \
-
-"Autorefresh files
-set autoread
 
 " Remove trailing whitespace
 autocmd FileType c,cpp,java,php,ruby,python,rb,coffee,js,html,css,scss,erb,haml,ts,styl,jade autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -100,11 +68,6 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Syntanstic
-let g:syntastic_javascript_checkers = ['jshint']
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-
 " Airline settings
 let g:airline_theme = 'powerlinesh'
 let g:airline_powerline_fonts = 1
@@ -119,3 +82,6 @@ let g:move_key_modifier = 'C'
 " Add empty lines without entering normal mode
 map <leader>o o<Esc>
 map <leader>O O<Esc>
+
+" Fzf mappings
+map <C-p> :Files<CR>
