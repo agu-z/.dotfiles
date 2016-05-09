@@ -16,6 +16,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
+Plug 'vim-scripts/vim-stylus'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 
@@ -43,7 +44,7 @@ set relativenumber
 set clipboard=unnamed
 
 " Remove trailing whitespace
-autocmd FileType c,cpp,java,php,ruby,python,rb,coffee,js,html,css,scss,erb,haml,ts,styl,jade autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Tsuquyomi
 autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
@@ -84,4 +85,8 @@ map <leader>o o<Esc>
 map <leader>O O<Esc>
 
 " Fzf mappings
-map <C-p> :Files<CR>
+map <C-p> :GitFiles<CR>
+
+" Make < > shifts keep selection
+vnoremap < <gv
+vnoremap > >gv
