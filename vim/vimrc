@@ -19,6 +19,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'vim-scripts/vim-stylus'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
+Plug 'sgur/vim-lazygutter'
+Plug 'digitaltoad/vim-pug'
 
 call plug#end()
 
@@ -42,6 +44,9 @@ set noswapfile
 
 set relativenumber
 set clipboard=unnamed
+
+" Leader key
+let mapleader = ","
 
 " Remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -85,7 +90,12 @@ map <leader>o o<Esc>
 map <leader>O O<Esc>
 
 " Fzf mappings
-map <C-p> :GitFiles<CR>
+map <leader><leader> :Files<CR>
+map <leader>gf :GitFiles<CR>
+map <leader>gc :Commits<CR>
+map <leader>/ :Lines<CR>
+map <leader>\ :BLines<CR>
+map <leader>b :Buffers<CR>
 
 " Make < > shifts keep selection
 vnoremap < <gv
