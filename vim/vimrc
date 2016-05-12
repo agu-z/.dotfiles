@@ -22,6 +22,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 Plug 'sgur/vim-lazygutter'
 Plug 'digitaltoad/vim-pug'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 call plug#end()
 
@@ -76,7 +78,6 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " Airline settings
-let g:airline_theme = 'powerlinesh'
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 
@@ -115,3 +116,8 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
+" Vim session
+let g:session_directory = "~/.config/nvim/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
