@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'benekastah/neomake'
 Plug 'junegunn/vim-easy-align'
+Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'matze/vim-move'
@@ -96,6 +97,7 @@ map <leader>gc :Commits<CR>
 map <leader>/ :Lines<CR>
 map <leader>\ :BLines<CR>
 map <leader>b :Buffers<CR>
+map <leader>ag :Ag<CR>
 
 " Make < > shifts keep selection
 vnoremap < <gv
