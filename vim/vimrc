@@ -75,11 +75,14 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Default mapping
+" Multi cursor mappings
 let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" Keep all multi cursors when leaving insert mode
+let g:multi_cursor_exit_from_insert_mode=0
 
 " Airline settings
 let g:airline_powerline_fonts = 1
