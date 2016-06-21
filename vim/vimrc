@@ -9,23 +9,27 @@ Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'matze/vim-move'
-Plug 'Quramy/tsuquyomi'
+Plug 'clausreinke/typescript-tools.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/vimproc.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-scripts/vim-stylus'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
-Plug 'sgur/vim-lazygutter'
 Plug 'digitaltoad/vim-pug'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug 'magarcia/vim-angular2-snippets'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
 
 call plug#end()
+
+colorscheme atom-dark-256
 
 set showcmd
 set nowrap
@@ -39,13 +43,13 @@ set sw=2
 set ts=2
 
 set guifont=Hack:h12
-colorscheme atom-dark-256
 
 set nobackup
 set nowritebackup
 set noswapfile
 
 set relativenumber
+set number
 set clipboard=unnamed
 
 " Leader key
@@ -59,7 +63,7 @@ autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol
 autocmd FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
 
 " NERD Mappings
-map <C-n> :NERDTreeToggle<CR>
+map <leader>f :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeFind<CR>
 
 " Tabs Mapping
@@ -121,3 +125,59 @@ let g:session_directory = "~/.config/nvim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
+
+" Neomake
+autocmd! BufWritePost,BufEnter * Neomake
+
+let g:neomake_typescript_tslint_maker = {
+\ 'args': [
+\   '--format verbose', '-c $PWD/tslint.json', '--force'
+\ ],
+\ 'errorformat': '%f[%l\, %c]: %m'
+\ }
+let g:neomake_typescript_enabled_makers = ['tslint']
+
+" YouCompleteMe
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
+" angular2
+
+func! Ng2GoTo(mode, type)
+  if a:mode == 'e'
+    let cmd = 'edit'
+  elseif a:mode == 't'
+    let cmd = 'tabe'
+  elseif a:mode == 's'
+    let cmd = 'sp'
+  elseif a:mode == 'v'
+    let cmd = 'vs'
+  endif
+
+  if a:type == 'v'
+    let extension = 'html'
+  elseif a:type == 'c'
+    let extension = 'ts'
+  elseif a:type == 'ss'
+    let extension = 'scss'
+  elseif a:type == 'sp'
+    let extension = 'spec.ts'
+  endif
+
+  execute cmd . ' ' . expand('%:p:r') . '.' . extension
+endfu
+
+map <leader>ec :call Ng2GoTo('e', 'c') <CR>
+map <leader>ev :call Ng2GoTo('e', 'v') <CR>
+map <leader>ess :call Ng2GoTo('e', 'ss') <CR>
+map <leader>tc :call Ng2GoTo('t', 'c') <CR>
+map <leader>tv :call Ng2GoTo('t', 'v') <CR>
+map <leader>tss :call Ng2GoTo('t', 'ss') <CR>
+map <leader>vc :call Ng2GoTo('v', 'c') <CR>
+map <leader>vv :call Ng2GoTo('v', 'v') <CR>
+map <leader>vss :call Ng2GoTo('v', 'ss') <CR>
+map <leader>sc :call Ng2GoTo('s', 'c') <CR>
+map <leader>sv :call Ng2GoTo('s', 'v') <CR>
+map <leader>sss :call Ng2GoTo('s', 'ss') <CR>
