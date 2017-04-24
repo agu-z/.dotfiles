@@ -29,6 +29,9 @@ fi
 # Set default editor
 export EDITOR='nvim' #, of course
 
+# Tmux
+export DISABLE_AUTO_TITLE='true'
+
 # Tmuxinator aliasses
 alias tms='tmuxinator start'
 alias tme='tmuxinator edit'
@@ -37,4 +40,24 @@ alias tmn='tmuxinator new'
 # Neovim
 alias vim=nvim
 
+# Custom PATH
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/Library/Android/sdk/platform-tools"
+export ANDROID_HOME=/Users/aguz/Library/Android/sdk
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias j='echo "Thanks! I needed that!"'
+
+###-tns-completion-start-###
+if [ -f /Users/aguz/.tnsrc ]; then
+    source /Users/aguz/.tnsrc
+fi
+###-tns-completion-end-###
+
+
+###-tns-completion-start-###
+if [ -f /Users/aguz/.tnsrc ]; then 
+    source /Users/aguz/.tnsrc 
+fi
+###-tns-completion-end-###

@@ -3,13 +3,12 @@ set list
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'benekastah/neomake'
+"Plug 'neomake/neomake'
 Plug 'junegunn/vim-easy-align'
 Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'matze/vim-move'
-Plug 'clausreinke/typescript-tools.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/vimproc.vim'
@@ -23,9 +22,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'digitaltoad/vim-pug'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-Plug 'magarcia/vim-angular2-snippets'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-surround'
+Plug 'Quramy/tsuquyomi'
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
@@ -54,6 +55,7 @@ set clipboard=unnamed
 
 " Leader key
 let mapleader = ","
+let NERDTreeShowHidden=1
 
 " Remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -61,6 +63,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Tsuquyomi
 autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
 autocmd FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
+"let g:tsuquyomi_disable_quickfix = 1
 
 " NERD Mappings
 map <leader>f :NERDTreeToggle<CR>
@@ -98,6 +101,10 @@ let g:move_key_modifier = 'C'
 map <leader>o o<Esc>
 map <leader>O O<Esc>
 
+" Save map
+imap <C-g> <Esc>:w<CR>
+nmap <C-g> :w<CR>
+
 " Fzf mappings
 map <leader><leader> :Files<CR>
 map <leader>gf :GitFiles<CR>
@@ -130,15 +137,16 @@ let g:session_autosave = "no"
 let g:session_command_aliases = 1
 
 " Neomake
-autocmd! BufWritePost,BufEnter * Neomake
+"autocmd! BufWritePost,BufEnter * Neomake
 
-let g:neomake_typescript_tslint_maker = {
-\ 'args': [
-\   '--format verbose', '-c $PWD/tslint.json', '--force'
-\ ],
-\ 'errorformat': '%f[%l\, %c]: %m'
-\ }
-let g:neomake_typescript_enabled_makers = ['tslint']
+let g:neomake_warning_sign = {
+  \ 'text': '⚠️',
+  \ 'texthl': 'WarningMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '❌',
+  \ 'texthl': 'ErrorMsg',
+  \ }
 
 " YouCompleteMe
 if !exists("g:ycm_semantic_triggers")
@@ -184,3 +192,9 @@ map <leader>vss :call Ng2GoTo('v', 'ss') <CR>
 map <leader>sc :call Ng2GoTo('s', 'c') <CR>
 map <leader>sv :call Ng2GoTo('s', 'v') <CR>
 map <leader>sss :call Ng2GoTo('s', 'ss') <CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
