@@ -11,7 +11,7 @@ set -e
 
 if [ ! -d "$DOTFILES_DIR" ]; then
   echo "Cloning .dotfiles"
-  git clone git@github.com:aguzubiaga/.dotfiles $DOTFILES_DIR
+  git clone https://github.com/aguzubiaga/.dotfiles.git $DOTFILES_DIR
 fi
 
 function setup_brew {
