@@ -43,7 +43,7 @@ function setup_tmux {
   rm -f ~/.tmux.conf
   ln -s $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
   echo "Installing tmuxinator"
-  gem install tmuxinator
+  install_package install tmuxinator
 }
 
 function setup_nvim {
