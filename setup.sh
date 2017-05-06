@@ -29,6 +29,7 @@ function setup_zsh {
   echo "Installing oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   echo "Linking zshrc file"
+  rm -f ~/.zshrc
   ln -s $DOTFILES_DIR/zsh/zshrc ~/.zshrc
   echo "Linking zsh prompt"
   ln -s $DOTFILES_DIR/zsh/prompt.zsh .oh-my-zsh/custom/plugins/prompt.zsh
@@ -39,6 +40,7 @@ function setup_tmux {
   echo "Installing tmux"
   install_package tmux
   echo "Linking tmux configuration file"
+  rm -f ~/.tmux.conf
   ln -s $DOTFILES_DIR/tmux/tmux.conf ~/.tmux.conf
   echo "Installing tmuxinator"
   gem install tmuxinator
@@ -55,6 +57,7 @@ function setup_nvim {
   fi
 
   echo "Linking neovim configuration"
+  rm -rf ~/.config/nvim
   ln -s $DOTFILES_DIR/.nvim ~/.config/nvim
 }
 
