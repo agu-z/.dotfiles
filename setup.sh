@@ -1,18 +1,20 @@
 DOTFILES_DIR=~/.dotfiles
 SSH_KEY_PATH=~/.ssh/id_rsa
 
-if [ "$(uname)" == "Darwin" ]; then
-  alias install_package="brew install"
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  alias install_package="sudo apt-get install"
-fi
-
 set -e
 
 if [ ! -d "$DOTFILES_DIR" ]; then
   echo "Cloning .dotfiles"
   git clone https://github.com/aguzubiaga/.dotfiles.git $DOTFILES_DIR
 fi
+
+function install_package {
+  if [ "$(uname)" == "Darwin" ]; then
+    brew install "$@"
+  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    sudo apt-get install "$@"
+  fi
+}
 
 function setup_brew {
   # brew setup
