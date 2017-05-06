@@ -5,7 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 "Plug 'neomake/neomake'
 Plug 'junegunn/vim-easy-align'
-Plug 'rking/ag.vim'
+"Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'matze/vim-move'
