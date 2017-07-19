@@ -4,22 +4,17 @@ export ZSH=~/.oh-my-zsh
 plugins=(git rails google bundlerx command-not-found npm nyan history sudo wd web-search bundler tmuxinator tmux zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.dotfiles/zsh/prompt.zsh
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-
-# Aliases
-alias zshconfig="vim ~/.zshrc"
-alias reload!="source ~/.zshrc"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home"
+export ANDROID_HOME="~/Library/Android/sdk"
 
 # Functions
 function git-clean {
   git fetch -u
   git branch --merged | grep -v '*' | grep -v master | grep -v development | ifne xargs -n 1 git branch -d
 }
-
-# NVM
-export NVM_DIR="/home/aguz/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Load local configurations
 if [[ -a ~/.localrc ]]; then
@@ -37,23 +32,26 @@ alias tms='tmuxinator start'
 alias tme='tmuxinator edit'
 alias tmn='tmuxinator new'
 
-# Neovim
+# Aliases
 alias vim=nvim
-
-# Custom PATH
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/Android/Sdk/platform-tools:$HOME/Android/sdk/tools"
-#export ANDROID_HOME=/Users/aguz/Library/Android/sdk
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+alias zshconfig="vim ~/.zshrc"
+alias reload!="source ~/.zshrc"
 alias j='echo "Thanks! I needed that!"'
 
-###-tns-completion-start-###
-if [ -f /home/aguz/.tnsrc ]; then
-    source /home/aguz/.tnsrc
-fi
-###-tns-completion-end-###
+# Custom PATH
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/Library/Android/Sdk/platform-tools:$HOME/Library/Android/sdk/tools"
 
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# NVM
+export NVM_DIR="/Users/aguz/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/aguz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/aguz/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/aguz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/aguz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/usr/local/opt/curl/bin:$PATH"

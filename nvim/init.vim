@@ -27,6 +27,9 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-surround'
 Plug 'Quramy/tsuquyomi'
 Plug 'junegunn/vim-easy-align'
+Plug 'raichoo/purescript-vim'
+Plug 'flowtype/vim-flow'
+Plug 'frigoeu/psc-ide-vim'
 
 call plug#end()
 
@@ -198,3 +201,16 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+let g:flow#enable = 0
+
+au FileType purescript nmap <buffer> <leader>t :<C-U>PSCIDEtype<CR>
+au FileType purescript nmap <buffer> <leader>s :<C-U>PSCIDEapplySuggestion<CR>
+au FileType purescript nmap <buffer> <leader>a :<C-U>PSCIDEaddTypeAnnotation<CR>
+au FileType purescript nmap <buffer> <leader>i :<C-U>PSCIDEimportIdentifier<CR>
+au FileType purescript nmap <buffer> <leader>r :<C-U>PSCIDEload<CR>
+au FileType purescript nmap <buffer> <leader>p :<C-U>PSCIDEpursuit<CR>
+au FileType purescript nmap <buffer> <leader>c :<C-U>PSCIDEcaseSplit<CR>
+au FileType purescript nmap <buffer> <leader>qd :<C-U>PSCIDEremoveImportQualifications<CR>
+au FileType purescript nmap <buffer> <leader>qa :<C-U>PSCIDEaddImportQualifications<CR>
