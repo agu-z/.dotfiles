@@ -1,21 +1,22 @@
-# ZSH Config
 export ZSH=~/.oh-my-zsh
 
-plugins=(git rails google bundlerx command-not-found npm nyan history sudo wd web-search bundler tmuxinator tmux zsh-autosuggestions)
+plugins=(
+  git
+  npm
+)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+autoload -U promptinit; promptinit
+prompt pure
 
 # Aliases
 alias zshconfig="vim ~/.zshrc"
 alias reload!="source ~/.zshrc"
-
-# Functions
-function git-clean {
-  git fetch -u
-  git branch --merged | grep -v '*' | grep -v master | grep -v development | ifne xargs -n 1 git branch -d
-}
+alias tms='tmuxinator start'
+alias tme='tmuxinator edit'
+alias tmn='tmuxinator new'
+alias vim=nvim
 
 # NVM
 export NVM_DIR="/Users/aguz/.nvm"
@@ -31,33 +32,4 @@ export EDITOR='nvim' #, of course
 
 # Tmux
 export DISABLE_AUTO_TITLE='true'
-
-# Tmuxinator aliasses
-alias tms='tmuxinator start'
-alias tme='tmuxinator edit'
-alias tmn='tmuxinator new'
-
-# Neovim
-alias vim=nvim
-
-# Custom PATH
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/Library/Android/sdk/platform-tools"
-export ANDROID_HOME=/Users/aguz/Library/Android/sdk
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-alias j='echo "Thanks! I needed that!"'
-
-###-tns-completion-start-###
-if [ -f /Users/aguz/.tnsrc ]; then
-    source /Users/aguz/.tnsrc
-fi
-###-tns-completion-end-###
-
-
-###-tns-completion-start-###
-if [ -f /Users/aguz/.tnsrc ]; then 
-    source /Users/aguz/.tnsrc 
-fi
-###-tns-completion-end-###
