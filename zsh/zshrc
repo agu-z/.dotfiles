@@ -8,7 +8,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-fpath+=('$HOME/.nvm/versions/node/v8.9.4/lib/node_modules/pure-prompt/functions')
+fpath+=($HOME/.nvm/versions/node/v8.9.4/lib/node_modules/pure-prompt/functions)
 export PATH=$PATH:$HOME/.bin
 
 autoload -U promptinit; promptinit
