@@ -47,8 +47,8 @@ let NERDTreeShowHidden=1
 autocmd BufWritePre * :%s/\s\+$//e
 
 " NERD Mappings
-map <C-1> :NERDTreeToggle<CR>
-nmap <C-2> :NERDTreeFind<CR>
+map <leader>F :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeFind<CR>
 
 " Keep all multi cursors when leaving insert mode
 let g:multi_cursor_exit_from_insert_mode=0
@@ -69,8 +69,8 @@ map <leader>o o<Esc>
 map <leader>O O<Esc>
 
 " Fzf mappings
-map <C-p> :Files<CR>
-map <C-S-F>ag :Ag<CR>
+map <leader><leader> :Files<CR>
+map <leader>ag :Ag<CR>
 map <leader>/ :Lines<CR>
 
 " Make < > shifts keep selection
