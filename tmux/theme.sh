@@ -14,7 +14,7 @@ tm_separator_right_bold="▶"
 tm_separator_right_thin="❯"
 
 set -g status-left-length 32
-set -g status-right-length 150
+set -g status-right-length 40
 set -g status-interval 60
 
 
@@ -49,11 +49,6 @@ set-option -g display-panes-colour $tm_color_inactive
 # clock
 set-window-option -g clock-mode-colour $tm_color_active
 
-#tm_tunes="#[fg=$tm_color_music]#(osascript ~/.dotfiles/applescripts/now-playing-radiant-player.scpt)"
-tm_tunes=""
-tm_battery="#(~/.dotfiles/tmux/battery_indicator.sh)"
+set -g status-left "$tm_icon $tm_session_name"
+set -g status-right "#[fg=$tm_color_inactive] %R %d %b"
 
-tm_date="#[fg=$tm_color_inactive] %R %d %b"
-
-set -g status-left "🍕 $tm_session_name"
-set -g status-right $tm_tunes' '$tm_date' '$tm_battery' '
