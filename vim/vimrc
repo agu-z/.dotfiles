@@ -1,8 +1,6 @@
-filetype off
-set list
-
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -10,16 +8,25 @@ Plug 'matze/vim-move'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
-Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'kaicataldo/material.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
-set background=dark
-colorscheme hybrid_reverse
 
+let g:material_theme_style = 'darker'
+
+colorscheme material
+
+if (has('termguicolors'))
+  set termguicolors
+endif
+
+
+set nocompatible
 set showcmd
 set nowrap
 set tabstop=2 shiftwidth=2
@@ -53,16 +60,15 @@ nmap <leader>n :NERDTreeFind<CR>
 " Keep all multi cursors when leaving insert mode
 let g:multi_cursor_exit_from_insert_mode=0
 
-" Airline settings
-let g:airline_theme = "hybrid"
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'fancy'
-
-" Identline settings
-let g:indentLine_enabled = 0
+"Lightline vim
+set laststatus=2
+let g:lightline = { 'colorscheme': 'material_vim' }
 
 " Move lines
 let g:move_key_modifier = 'C'
+
+" Identline settings
+let g:indentLine_enabled = 0
 
 " Add empty lines without entering normal mode
 map <leader>o o<Esc>
@@ -88,3 +94,40 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+
+" Coc TS
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
