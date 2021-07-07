@@ -1,0 +1,21 @@
+<!-- Install with ln -s ke. ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>ke.bou.dark-mode-notify</string>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardErrorPath</key>
+    <string>----Path to a location----/dark-mode-notify-stderr.log</string>
+    <key>StandardOutPath</key>
+    <string>----Path to a location----/dark-mode-notify-stdout.log</string>
+    <key>ProgramArguments</key>
+    <array>
+       <string>/usr/local/bin/dark-mode-notify</string>
+       <string>--- Path to your script ---</string>
+    </array>
+</dict>
+</plist>
